@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+
 // ℹ️ Handles password encryption
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
@@ -129,6 +130,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
+        res.render('../views/profile.hbs')
         return res.redirect("/");
       });
     })
